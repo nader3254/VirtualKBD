@@ -12,16 +12,20 @@ class MyWidget(QWidget):
         self.layout.addWidget(self.label)
         
         self.line_edit = QLineEdit()
-        self.line_edit.editingFinished.connect(self.line_edit_clicked)
-        self.line_edit.mousePressEvent = self.line_edit_clicked
         self.layout.addWidget(self.line_edit) 
- 
+        
+        self.label = QLabel('Enter your password:')
+        self.layout.addWidget(self.label)
+        
+        self.line_edit2 = QLineEdit()
+        self.layout.addWidget(self.line_edit2) 
+        
+        
         self.setLayout(self.layout)
-                        
+        virtualKbd.Registe(self.line_edit)                
+        virtualKbd.Registe(self.line_edit2) 
+        
 
-    def line_edit_clicked(self, event=None):
-        print(" line eadit clicked")
-        virtualKbd.start(self.line_edit)
              
       
 if __name__ == '__main__':

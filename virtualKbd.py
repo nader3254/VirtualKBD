@@ -55,15 +55,19 @@ from functools import partial
 #########################################################
 # will start the virtual ketboard in only one inistance
 #########################################################
-class start():
+class Registe():
        def __init__(self,QLnEdt):
-        # QLnEdt : should be a QLineEadit object        
+        # QLnEdt : should be a QLineEadit object 
+        self.mylnedt=QLnEdt
+        QLnEdt.mousePressEvent = self.show       
+        
+       def show(self,event=None): 
         try:
-            if not hasattr(start, "virtual_keyboard") or not start.virtual_keyboard.isVisible():                   
-              start.virtual_keyboard = VKBD(QLnEdt)
-              start.virtual_keyboard.show()
+            if not hasattr(Registe, "virtual_keyboard") or not Registe.virtual_keyboard.isVisible():                   
+              Registe.virtual_keyboard = VKBD(self.mylnedt)
+              Registe.virtual_keyboard.show()
             else:
-              start.virtual_keyboard.activateWindow()
+              Registe.virtual_keyboard.activateWindow()
         except:
             print("failed to open virtual keyboard ,already exist ")
                 
